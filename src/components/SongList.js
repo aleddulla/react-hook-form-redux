@@ -4,6 +4,7 @@ import { selectSong } from '../actions';
 import LoadingSpinner from './LoadingSpinner';
 
 class SongList extends Component {
+
   renderList(movies) {
     if (!movies) {
       return;
@@ -27,20 +28,30 @@ class SongList extends Component {
   }
 
   render() {
-    const { loading, movies } = this.props;
+    const { loading, movies, tabOn, handleTabOnOff } = this.props;
     return (
-        <div className="ui divided list">
-          {loading ? <LoadingSpinner /> : this.renderList(movies)}
+      <div>
+        <div>
+          <div className="ui row">
+            <div className="column eight wide">
+              <button style={{ fontSize: '24px' }} onClick={(e) => handleTabOnOff()}>Show Rooms
+                {tabOn ? <i className='fas fa-arrow-circle-up'></i> : <i className="fas fa-arrow-circle-down"></i>}
+              </button>
+            </div>
+          </div>
         </div>
-      );
+        {tabOn ? <div className="ui divided list">
+          {this.renderList(movies)}
+        </div>: null}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   console.log(state.movies);
-  return { 
-    movies: state.movies,
-    loading: state.loading.loading
+  return {
+    movies: state.movies
   };
 };
 
