@@ -29,7 +29,7 @@ class SongList extends Component {
   }
 
   render() {
-    const { loading, movies, tabOn, handleTabOnOff } = this.props;
+    const { loading, movies, tabOn } = this.props;
     return (
       <div>
        {/** <div>
