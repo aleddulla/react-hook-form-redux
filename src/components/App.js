@@ -16,12 +16,12 @@ const App = ({ loading }) => {
           <SearchForm />
         </div>
         <div className="column eight wide">
-          <ViewMovies />
+          <ViewMovies handleTabOnOff={() => setTabOn(!tabOn)} tabOn={tabOn} />
         </div>
       </div>      
       {loading? <LoadingSpinner />: (<div className="ui row">
         <div className="column eight wide">
-          <SongList handleTabOnOff={() => setTabOn(!tabOn)} tabOn={tabOn}/>
+          <SongList/>
         </div>
         <div className="column eight wide">
           <SongDetail />

@@ -10,6 +10,7 @@ class SongList extends Component {
       return;
     }
 
+
     return movies && movies.map(song => {
       return (
         <div className="item" key={song.title}>
@@ -31,7 +32,7 @@ class SongList extends Component {
     const { loading, movies, tabOn, handleTabOnOff } = this.props;
     return (
       <div>
-        <div>
+       {/** <div>
           <div className="ui row">
             <div className="column eight wide">
               <button style={{ fontSize: '24px' }} onClick={(e) => handleTabOnOff()}>Show Rooms
@@ -39,7 +40,7 @@ class SongList extends Component {
               </button>
             </div>
           </div>
-        </div>
+        </div>*/}
         {tabOn ? <div className="ui divided list">
           {this.renderList(movies)}
         </div>: null}
@@ -51,7 +52,8 @@ class SongList extends Component {
 const mapStateToProps = state => {
   console.log(state.movies);
   return {
-    movies: state.movies
+    movies: state.movies.data,
+    tabOn: state.movies.tabOn
   };
 };
 
